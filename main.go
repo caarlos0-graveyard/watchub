@@ -11,6 +11,7 @@ import (
 	"github.com/caarlos0/watchub/internal/oauth"
 	"github.com/caarlos0/watchub/internal/scheduler"
 	"github.com/caarlos0/watchub/internal/template"
+	"github.com/caarlos0/watchub/internal/track"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
 	_ "github.com/lib/pq"
@@ -25,13 +26,15 @@ func main() {
 		log.Panicln(err)
 	}
 
+	track := track.New(config)
+
 	// datastores
 	db := database.Connect(config.DatabaseURL)
 	defer db.Close()
 	store := database.NewDatastore(db)
 
 	// oauth
-	oauth := oauth.New(store, config)
+	oauth := oauth.New(store, config, track)
 
 	// schedulers
 	scheduler := scheduler.New(config, store, oauth)

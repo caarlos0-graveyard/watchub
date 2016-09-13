@@ -7,6 +7,7 @@ import (
 	"github.com/caarlos0/watchub/internal/config"
 	"github.com/caarlos0/watchub/internal/datastores"
 	"github.com/caarlos0/watchub/internal/dto"
+	"github.com/caarlos0/watchub/internal/track"
 	"github.com/google/go-github/github"
 	"github.com/labstack/echo"
 	"golang.org/x/oauth2"
@@ -15,13 +16,16 @@ import (
 
 // Oauth info
 type Oauth struct {
-	config *oauth2.Config
-	store  datastores.Datastore
-	state  string
+	config  *oauth2.Config
+	store   datastores.Datastore
+	state   string
+	tracker *track.Tracker
 }
 
 // New oauth
-func New(store datastores.Datastore, config config.Config) *Oauth {
+func New(
+	store datastores.Datastore, config config.Config, tracker *track.Tracker,
+) *Oauth {
 	return &Oauth{
 		config: &oauth2.Config{
 			ClientID:     config.ClientID,
@@ -29,8 +33,9 @@ func New(store datastores.Datastore, config config.Config) *Oauth {
 			Scopes:       []string{"user:email"},
 			Endpoint:     githuboauth.Endpoint,
 		},
-		store: store,
-		state: config.OauthState,
+		store:   store,
+		state:   config.OauthState,
+		tracker: tracker,
 	}
 }
 
@@ -66,6 +71,7 @@ func (o *Oauth) Mount(e *echo.Echo) *echo.Group {
 		if err := o.store.SaveToken(int64(*u.ID), token); err != nil {
 			return err
 		}
+		go o.tracker.Track(int64(*u.ID), "Login")
 		return c.Render(http.StatusOK, "index", dto.User{User: *u.Login})
 	})
 

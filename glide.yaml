@@ -26,6 +26,9 @@ import:
   version: ^3.2.1
   subpackages:
   - '...'
+- package: github.com/nitrous-io/go-mixpanel
+  subpackages:
+  - '...'
 testImport:
 - package: github.com/stretchr/testify
   version: ^1.1.3

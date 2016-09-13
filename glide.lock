@@ -1,5 +1,5 @@
-hash: 7c9a2271f4b2f3cbac15cbbe06f567b3b9b11f3038a6a9f9204e2a6abce01f8c
-updated: 2016-09-07T16:21:18.011153819-03:00
+hash: fc0b7e27dba9736782a8a29949fa1bc1b3196ead02b2f182ca93e530036c6464
+updated: 2016-09-13T09:01:20.229917352-03:00
 imports:
 - name: github.com/caarlos0/env
   version: 65331f179c42e3ffe33457b69bee55472a779cd6
@@ -42,6 +42,10 @@ imports:
   version: ed8eb9e318d7a84ce5915b495b7d35e0cfe7b5a8
 - name: github.com/mattn/go-isatty
   version: 66b8e73f3f5cda9f96b69efd03dd3d7fc4a5cdb8
+- name: github.com/nitrous-io/go-mixpanel
+  version: 5258575f8e3a6aee706c7f62e9ff05548fefaf7a
+  subpackages:
+  - '...'
 - name: github.com/robfig/cron
   version: b024fc5ea0e34bc3f83d9941c8d60b0622bfaca4
   subpackages:
@@ -49,13 +53,14 @@ imports:
 - name: github.com/sendgrid/rest
   version: d37acbf70185e33da36a233f4df95848b052427c
 - name: github.com/sendgrid/sendgrid-go
-  version: ccdbf45dbbbfb100c4a59a64802d58d5059098f3
+  version: 011cae44b6c50aa21349daaef3a259cb375bd28c
   subpackages:
   - '...'
+  - helpers/mail
 - name: github.com/valyala/fasttemplate
   version: 3b874956e03f1636d171bda64b130f9135f42cff
 - name: golang.org/x/net
-  version: 9313baa13d9262e49d07b20ed57dceafcd7240cc
+  version: 749a502dd1eaf3e5bfd4f8956748c502357c0bbe
   subpackages:
   - context
 - name: golang.org/x/oauth2
@@ -80,7 +85,7 @@ imports:
   - urlfetch
 testImports:
 - name: github.com/davecgh/go-spew
-  version: 66f99a29a08158b999b0dc2e7ccacf1131d4e0b4
+  version: 6d212800a42e8ab5c146b8ace3490ee17e5225f9
   subpackages:
   - spew
 - name: github.com/pmezard/go-difflib

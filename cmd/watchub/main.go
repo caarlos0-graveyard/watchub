@@ -4,6 +4,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/caarlos0/watchub/handlers"
 	"github.com/caarlos0/watchub/oauth"
 	"github.com/caarlos0/watchub/postgres"
 	"github.com/gorilla/context"
@@ -33,10 +34,23 @@ func main() {
 	var session = sessions.NewCookieStore([]byte(config.SessionSecret))
 	var oauth = oauth.New(config)
 
+	var dbTokens = postgres.NewTokensSvc(db)
+	var dbStars = postgres.NewStargazersSvc(db)
+	var dbFollowers = postgres.NewFollowersSvc(db)
+	var dbRepositories = postgres.NewRepositoriesSvc(db)
+
 	var mux = mux.NewRouter()
-	mux.PathPrefix("/static/").Handler(
-		http.StripPrefix("/static/", http.FileServer(http.Dir("static"))),
-	)
+	mux.Methods(http.MethodGet).
+		Path("/").
+		Handler(handlers.NewIndex(config, session, dbStars, dbFollowers, dbRepositories))
+	mux.PathPrefix("/static/").
+		Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	mux.Methods(http.MethodGet).
+		Path("/login").
+		Handler(handlers.NewLogin(oauth))
+	mux.Methods(http.MethodGet).
+		Path("/login/callback").
+		Handler(handlers.NewLoginCallback(oauth, dbTokens, session, config))
 
 	// prometheus stuff
 	mux.Handle("/metrics", promhttp.Handler())

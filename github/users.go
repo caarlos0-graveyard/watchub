@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var _ watchub.UsersSvc = &Usersvc{}
+var _ watchub.UsersSvc = &UsersSvc{}
 
 func NewUsersSvc(oauth *oauth.Oauth) *UsersSvc {
 	return &UsersSvc{

@@ -21,7 +21,7 @@ type Scheduler struct {
 	Oauth             *oauth.Oauth
 	Session           sessions.Store
 	Mailer            watchub.MailSvc
-	Users             watchub.UserSvc
+	Users             watchub.UsersSvc
 	Executions        watchub.ExecutionsSvc
 	PreviousStars     watchub.StargazersSvc
 	PreviousFollowers watchub.FollowersSvc
@@ -89,7 +89,7 @@ func (s *Scheduler) process(exec watchub.Execution) {
 		log.WithError(err).Error("failed")
 		return
 	}
-	user, err := s.Users.Info()
+	user, err := s.Users.Info(exec.Token)
 	if err != nil {
 		log.WithError(err).Error("failed")
 		return

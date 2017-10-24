@@ -86,6 +86,6 @@ func (s *Scheduler) process(exec watchub.Execution) {
 		log.WithError(err).Error("failed")
 		return
 	}
-
+	// TODO: finish this
 	log.Infof("%d %d %d %d", len(previousStars), len(currentStars), len(previousFollowers), len(currentFollowers))
 }

@@ -7,7 +7,6 @@ type WelcomeEmail struct {
 	Followers int
 	Stars     int
 	Repos     int
-	ClientID  string
 }
 
 // StarEmail is the DTO representing a repository and the users starring it
@@ -27,7 +26,6 @@ type ChangesEmail struct {
 	Unfollowers  []string
 	NewStars     []StarEmail
 	Unstars      []StarEmail
-	ClientID     string
 }
 
 type MailSvc interface {

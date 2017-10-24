@@ -45,7 +45,6 @@ func main() {
 		Handler(handlers.NewIndex(config, session, dbStars, dbFollowers, dbRepositories))
 	mux.PathPrefix("/static/").
 		Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
-
 	mux.Methods(http.MethodGet).
 		Path("/donate").
 		Handler(handlers.NewDonate(config, session))
@@ -53,11 +52,16 @@ func main() {
 		Path("/contact").
 		Handler(handlers.NewContact(config, session))
 	mux.Methods(http.MethodGet).
+		Path("/schedule").
+		Handler(handlers.NewSchedule(config, session, dbTokens))
+	mux.Methods(http.MethodGet).
 		Path("/login").
 		Handler(handlers.NewLogin(oauth))
 	mux.Methods(http.MethodGet).
 		Path("/login/callback").
 		Handler(handlers.NewLoginCallback(oauth, dbTokens, session, config))
+	mux.Path("/logout").
+		Handler(handlers.NewLogout(config, session))
 
 	// prometheus stuff
 	mux.Handle("/metrics", promhttp.Handler())

@@ -13,7 +13,13 @@ import (
 
 var _ watchub.StargazersSvc = &StargazerSvc{}
 
-type StargazerSvc struct {
+func NewStargazersSvc(oauth *oauth.Oauth) *StargazersSvc {
+	return &StargazersSvc{
+		oauth: oauth,
+	}
+}
+
+type StargazersSvc struct {
 	oauth *oauth.Oauth
 }
 

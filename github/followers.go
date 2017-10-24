@@ -11,6 +11,12 @@ import (
 
 var _ watchub.FollowersSvc = &FollowersSvc{}
 
+func NewFollowersSvc(oauth *oauth.Oauth) *FollowersSvc {
+	return &FollowersSvc{
+		oauth: oauth,
+	}
+}
+
 type FollowersSvc struct {
 	oauth *oauth.Oauth
 }

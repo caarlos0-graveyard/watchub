@@ -17,22 +17,22 @@ var _ watchub.ScheduleSvc = &Scheduler{}
 // Scheduler type
 type Scheduler struct {
 	cron              *cron.Cron
-	config            config.Config
-	oauth             *oauth.Oauth
-	session           sessions.Store
-	mailer            watchub.MailSvc
-	users             watchub.UserSvc
-	executions        watchub.ExecutionsSvc
-	previousStars     watchub.StargazersSvc
-	previousFollowers watchub.FollowersSvc
-	currentStars      watchub.StargazersSvc
-	currentFollowers  watchub.FollowersSvc
+	Config            config.Config
+	Oauth             *oauth.Oauth
+	Session           sessions.Store
+	Mailer            watchub.MailSvc
+	Users             watchub.UserSvc
+	Executions        watchub.ExecutionsSvc
+	PreviousStars     watchub.StargazersSvc
+	PreviousFollowers watchub.FollowersSvc
+	CurrentStars      watchub.StargazersSvc
+	CurrentFollowers  watchub.FollowersSvc
 }
 
 // Start the scheduler
 func (s *Scheduler) Start() {
 	var fn = func() {
-		execs, err := s.executions.All()
+		execs, err := s.Executions.All()
 		if err != nil {
 			log.WithError(err).Error("failed to get executions")
 			return
@@ -43,7 +43,7 @@ func (s *Scheduler) Start() {
 		}
 	}
 	s.cron = cron.New()
-	if err := s.cron.AddFunc(s.config.Schedule, fn); err != nil {
+	if err := s.cron.AddFunc(s.Config.Schedule, fn); err != nil {
 		log.WithError(err).Fatal("failed to start cron service")
 	}
 	s.cron.Start()
@@ -61,35 +61,35 @@ func (s *Scheduler) process(exec watchub.Execution) {
 	var start = time.Now()
 	defer log.WithField("time_taken", time.Since(start).Seconds()).Info("done")
 	var log = log.WithField("id", exec.UserID)
-	previousStars, err := s.previousStars.Get(exec)
+	previousStars, err := s.PreviousStars.Get(exec)
 	if err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	previousFollowers, err := s.previousFollowers.Get(exec)
+	previousFollowers, err := s.PreviousFollowers.Get(exec)
 	if err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	currentStars, err := s.currentStars.Get(exec)
+	currentStars, err := s.CurrentStars.Get(exec)
 	if err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	currentFollowers, err := s.currentFollowers.Get(exec)
+	currentFollowers, err := s.CurrentFollowers.Get(exec)
 	if err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	if err := s.currentStars.Save(exec.UserID, currentStars); err != nil {
+	if err := s.CurrentStars.Save(exec.UserID, currentStars); err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	if err := s.currentFollowers.Save(exec.UserID, currentFollowers); err != nil {
+	if err := s.CurrentFollowers.Save(exec.UserID, currentFollowers); err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	user, err := s.users.Info()
+	user, err := s.Users.Info()
 	if err != nil {
 		log.WithError(err).Error("failed")
 		return
@@ -97,7 +97,7 @@ func (s *Scheduler) process(exec watchub.Execution) {
 
 	// new user, welcome him!
 	if len(previousFollowers)+len(previousStars) == 0 {
-		s.mailer.SendWelcome(watchub.WelcomeEmail{
+		s.Mailer.SendWelcome(watchub.WelcomeEmail{
 			Login:     user.Login,
 			Email:     user.Email,
 			Followers: len(currentFollowers),
@@ -115,7 +115,7 @@ func (s *Scheduler) process(exec watchub.Execution) {
 	}
 
 	// send changes!
-	s.mailer.SendChanges(
+	s.Mailer.SendChanges(
 		watchub.ChangesEmail{
 			Login:        user.Login,
 			Email:        user.Email,

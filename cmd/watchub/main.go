@@ -4,18 +4,23 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/caarlos0/watchub/config"
+	"github.com/caarlos0/watchub/github"
 	"github.com/caarlos0/watchub/handlers"
+	"github.com/caarlos0/watchub/mail"
 	"github.com/caarlos0/watchub/oauth"
 	"github.com/caarlos0/watchub/postgres"
+	"github.com/caarlos0/watchub/scheduler"
+
 	"github.com/gorilla/context"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"
+
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
 	"github.com/apex/httplog"
 	"github.com/apex/log"
 	"github.com/apex/log/handlers/logfmt"
-	"github.com/caarlos0/watchub/config"
 )
 
 // TODO: will this work on heroku?
@@ -32,15 +37,29 @@ func main() {
 		}
 	}()
 
-	// TODO: init scheduler here
-
 	var session = sessions.NewCookieStore([]byte(config.SessionSecret))
 	var oauth = oauth.New(config)
 
 	var dbTokens = postgres.NewTokensSvc(db)
 	var dbStars = postgres.NewStargazersSvc(db)
+	var dbExecutions = postgres.NewExecutionsSvc(db)
 	var dbFollowers = postgres.NewFollowersSvc(db)
 	var dbRepositories = postgres.NewRepositoriesSvc(db)
+
+	var schedule = scheduler.Scheduler{
+		Config:            config,
+		Oauth:             oauth,
+		Session:           session,
+		CurrentFollowers:  github.NewFollowersSvc(oauth),
+		CurrentStars:      github.NewStargazersSvc(oauth),
+		Users:             github.NewUsersSvc(oauth),
+		Mailer:            mail.NewMailSvc(config),
+		Executions:        dbExecutions,
+		PreviousFollowers: dbFollowers,
+		PreviousStars:     dbStars,
+	}
+	schedule.Start()
+	defer schedule.Stop()
 
 	var mux = mux.NewRouter()
 	mux.Methods(http.MethodGet).

@@ -7,6 +7,12 @@ import (
 
 var _ watchub.ExecutionsSvc = &ExecutionsSvc{}
 
+func NewExecutionsSvc(db *sqlx.DB) *ExecutionsSvc {
+	return &ExecutionsSvc{
+		db: db,
+	}
+}
+
 type ExecutionsSvc struct {
 	db *sqlx.DB
 }

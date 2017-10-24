@@ -5,6 +5,6 @@ type UserInfo struct {
 	Email string
 }
 
-type UserSvc interface {
-	Info() (UserInfo, error)
+type UsersSvc interface {
+	Info(token string) (UserInfo, error)
 }

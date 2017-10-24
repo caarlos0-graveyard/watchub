@@ -45,6 +45,13 @@ func main() {
 		Handler(handlers.NewIndex(config, session, dbStars, dbFollowers, dbRepositories))
 	mux.PathPrefix("/static/").
 		Handler(http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+
+	mux.Methods(http.MethodGet).
+		Path("/donate").
+		Handler(handlers.NewDonate(config, session))
+	mux.Methods(http.MethodGet).
+		Path("/contact").
+		Handler(handlers.NewContact(config, session))
 	mux.Methods(http.MethodGet).
 		Path("/login").
 		Handler(handlers.NewLogin(oauth))

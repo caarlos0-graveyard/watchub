@@ -7,7 +7,7 @@ import (
 
 	"github.com/caarlos0/watchub"
 	"github.com/caarlos0/watchub/config"
-	"github.com/tj/assert"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestWelcomeMail(t *testing.T) {

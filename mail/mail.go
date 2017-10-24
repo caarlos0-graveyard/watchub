@@ -37,7 +37,7 @@ var changesIntro = []string{
 func NewMailSvc(config config.Config) *MailSvc {
 	return &MailSvc{
 		hermes:  emailConfig,
-		changes: template.Must(template.ParseFiles("static/mail/changes.html")),
+		changes: template.Must(template.ParseFiles("static/mail/changes.md")),
 		welcome: template.Must(template.ParseFiles("static/mail/welcome.md")),
 		config:  config,
 	}
@@ -57,8 +57,8 @@ func (s *MailSvc) SendWelcome(data watchub.WelcomeEmail) {
 		return
 	}
 	s.send(data.Login, data.Email, "Welcome to Watchub!", html)
-
 }
+
 func (s *MailSvc) SendChanges(data watchub.ChangesEmail) {
 	html, err := s.generate(data.Login, data, s.changes, changesIntro)
 	if err != nil {

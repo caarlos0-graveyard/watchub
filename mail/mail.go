@@ -2,8 +2,10 @@ package mail
 
 import (
 	"bytes"
+	"fmt"
 	"html/template"
-	"io/ioutil"
+	"strings"
+	"time"
 
 	"github.com/apex/log"
 	"github.com/caarlos0/watchub"
@@ -76,35 +78,32 @@ func (s *MailSvc) generate(login string, data interface{}, tmpl *template.Templa
 	return s.hermes.GenerateHTML(
 		hermes.Email{
 			Body: hermes.Body{
-				Name:         login,
-				Intros:       intros,
-				FreeMarkdown: hermes.Markdown(wr.String()),
-				Outros: []string{
-					"We will continue to watch for changes and let you know!",
-				},
-				Actions: []hermes.Action{
-					{
-						Instructions: "Liking our service? Maybe you'll consider donating!",
-						Button: hermes.Button{
-							Text: "Donate",
-							Link: "http://watchub.pw/donate",
+				Name:   login,
+				Intros: intros,
+				FreeMarkdown: hermes.Markdown(
+					strings.Join(
+						[]string{
+							wr.String(),
+							"\n\n",
+							"We will continue to watch for changes and let you know!",
+							"\n\n---\n\n",
+							"<small>",
+							`Liking our service? Maybe you'll consider [make a donation](http://watchub.pw/donate).`,
+							fmt.Sprintf(
+								`You might also want to change [your settings](%s).`,
+								"https://github.com/settings/connections/applications/"+s.config.ClientID,
+							),
+							"</small>",
 						},
-					},
-					{
-						Instructions: "Want to change something (or unsubscribe)?",
-						Button: hermes.Button{
-							Text: "Settings",
-							Link: "https://github.com/settings/connections/applications/" + s.config.ClientID,
-						},
-					},
-				},
+						" ",
+					),
+				),
 			},
 		},
 	)
 }
 
 func (s *MailSvc) send(name, email, subject, html string) {
-	ioutil.WriteFile("email.html", []byte(html), 0644)
 	var log = log.WithField("email", email)
 	var from = mail.NewEmail("Watchub", "noreply@watchub.pw")
 	var to = mail.NewEmail(name, email)
@@ -113,6 +112,10 @@ func (s *MailSvc) send(name, email, subject, html string) {
 		"/v3/mail/send",
 		"https://api.sendgrid.com",
 	)
+	request.Headers = map[string]string{
+		// prevent grouping in gmail
+		"X-Entity-Ref-ID": "watchub-" + time.Now().String(),
+	}
 	request.Method = "POST"
 	request.Body = mail.GetRequestBody(
 		mail.NewV3MailInit(

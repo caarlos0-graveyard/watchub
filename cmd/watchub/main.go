@@ -18,6 +18,7 @@ import (
 	"github.com/caarlos0/watchub/config"
 )
 
+// TODO: will this work on heroku?
 func main() {
 	log.SetHandler(logfmt.Default)
 	log.SetLevel(log.InfoLevel)
@@ -78,5 +79,4 @@ func main() {
 	if err := server.ListenAndServe(); err != nil {
 		log.WithError(err).Fatal("failed to start up server")
 	}
-
 }

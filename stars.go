@@ -7,6 +7,7 @@ type Star struct {
 	Stargazers []string `json:"stargazers"`
 }
 
+// TODO: break this in smaller interfaces and compose
 type StargazersSvc interface {
 	Get(execution Execution) ([]Star, error)
 	Count(userID int64) (int, error)

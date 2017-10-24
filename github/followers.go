@@ -15,6 +15,10 @@ type FollowersSvc struct {
 	oauth *oauth.Oauth
 }
 
+func (s *FollowersSvc) Save(userID int64, followers []string) error {
+	return errors.New("invalid op")
+}
+
 func (s *FollowersSvc) Get(execution watchub.Execution) ([]string, error) {
 	var result []string
 	var ctx = context.Background()

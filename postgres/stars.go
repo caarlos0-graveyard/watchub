@@ -42,3 +42,16 @@ func (s *StargazersSvc) Count(userID int64) (count int, err error) {
 	err = s.db.QueryRow(starCountQuery, userID).Scan(&count)
 	return
 }
+
+func (s *StargazersSvc) Save(userID int64, stars []watchub.Star) error {
+	data, err := json.Marshal(stars)
+	if err != nil {
+		return err
+	}
+	_, err = s.db.Exec(
+		"UPDATE tokens SET stars = $2 WHERE user_id = $1",
+		userID,
+		data,
+	)
+	return err
+}

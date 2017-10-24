@@ -17,6 +17,10 @@ type StargazerSvc struct {
 	oauth *oauth.Oauth
 }
 
+func (s *StargazersSvc) Save(userID int64, stars []watchub.Star) error {
+	return errors.New("invalid operation")
+}
+
 func (s *StargazerSvc) Get(execution watchub.Execution) (result []watchub.Star, err error) {
 	var ctx = context.Background()
 	client, err := s.oauth.ClientFrom(ctx, execution.Token)

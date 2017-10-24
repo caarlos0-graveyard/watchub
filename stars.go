@@ -10,4 +10,5 @@ type Star struct {
 type StargazersSvc interface {
 	Get(execution Execution) ([]Star, error)
 	Count(userID int64) (int, error)
+	Save(userID int64, stars []Star) error
 }

@@ -18,6 +18,15 @@ type FollowersSvc struct {
 	db *sqlx.DB
 }
 
+func (s *FollowersSvc) Save(userID int64, followers []string) error {
+	_, err := s.db.Exec(
+		"UPDATE tokens SET followers = $2 WHERE user_id = $1",
+		userID,
+		pq.Array(followers),
+	)
+	return err
+}
+
 func (s *FollowersSvc) Get(execution watchub.Execution) ([]string, error) {
 	var logins []string
 	return logins, s.db.QueryRow(

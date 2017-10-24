@@ -6,9 +6,8 @@ import (
 	"testing"
 
 	"github.com/caarlos0/watchub"
-	"github.com/tj/assert"
-
 	"github.com/caarlos0/watchub/config"
+	"github.com/tj/assert"
 )
 
 func TestWelcomeMail(t *testing.T) {

@@ -32,6 +32,8 @@ func main() {
 		}
 	}()
 
+	// TODO: init scheduler here
+
 	var session = sessions.NewCookieStore([]byte(config.SessionSecret))
 	var oauth = oauth.New(config)
 

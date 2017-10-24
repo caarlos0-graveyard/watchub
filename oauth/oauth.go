@@ -11,6 +11,8 @@ import (
 	githuboauth "golang.org/x/oauth2/github"
 )
 
+// TODO: replace this with some lib??
+
 // Oauth info
 type Oauth struct {
 	config *oauth2.Config

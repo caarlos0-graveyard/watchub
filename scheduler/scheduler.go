@@ -6,6 +6,7 @@ import (
 	"github.com/apex/log"
 	"github.com/caarlos0/watchub"
 	"github.com/caarlos0/watchub/config"
+	"github.com/caarlos0/watchub/diff"
 	"github.com/caarlos0/watchub/oauth"
 	"github.com/gorilla/sessions"
 	"github.com/robfig/cron"
@@ -19,6 +20,8 @@ type Scheduler struct {
 	config            config.Config
 	oauth             *oauth.Oauth
 	session           sessions.Store
+	mailer            watchub.MailSvc
+	users             watchub.UserSvc
 	executions        watchub.ExecutionsSvc
 	previousStars     watchub.StargazersSvc
 	previousFollowers watchub.FollowersSvc
@@ -86,6 +89,80 @@ func (s *Scheduler) process(exec watchub.Execution) {
 		log.WithError(err).Error("failed")
 		return
 	}
-	// TODO: finish this
-	log.Infof("%d %d %d %d", len(previousStars), len(currentStars), len(previousFollowers), len(currentFollowers))
+	user, err := s.users.Info()
+	if err != nil {
+		log.WithError(err).Error("failed")
+		return
+	}
+
+	// new user, welcome him!
+	if len(previousFollowers)+len(previousStars) == 0 {
+		s.mailer.SendWelcome(watchub.WelcomeEmail{
+			Login:     user.Login,
+			Email:     user.Email,
+			Followers: len(currentFollowers),
+			Stars:     countStars(currentStars),
+			Repos:     len(currentStars),
+		})
+		return
+	}
+	newFollowers := diff.Of(currentFollowers, previousFollowers)
+	unfollowers := diff.Of(previousFollowers, currentFollowers)
+	newStars, unstars := stargazerStatistics(currentStars, previousStars)
+	// nothing changed, ignore
+	if len(newFollowers)+len(unfollowers)+len(newStars)+len(unstars) == 0 {
+		return
+	}
+
+	// send changes!
+	s.mailer.SendChanges(
+		watchub.ChangesEmail{
+			Login:        user.Login,
+			Email:        user.Email,
+			Followers:    len(currentFollowers),
+			Stars:        countStars(currentStars),
+			Repos:        len(currentStars),
+			NewFollowers: newFollowers,
+			Unfollowers:  unfollowers,
+			NewStars:     newStars,
+			Unstars:      unstars,
+		},
+	)
+}
+
+// TODO: refactor this to a watchub.Stars type?
+func countStars(stars []watchub.Star) (count int) {
+	for _, star := range stars {
+		count += len(star.Stargazers)
+	}
+	return
+}
+
+func stargazerStatistics(stars, previousStars []watchub.Star) (newStars, unstars []watchub.StarEmail) {
+	for _, s := range stars {
+		for _, os := range previousStars {
+			if s.RepoID != os.RepoID {
+				continue
+			}
+			if d := getDiff(s.RepoName, s.Stargazers, os.Stargazers); d != nil {
+				newStars = append(newStars, *d)
+			}
+			if d := getDiff(s.RepoName, os.Stargazers, s.Stargazers); d != nil {
+				unstars = append(unstars, *d)
+			}
+			break
+		}
+	}
+	return newStars, unstars
+}
+
+func getDiff(name string, x, xs []string) *watchub.StarEmail {
+	var d = diff.Of(x, xs)
+	if len(d) > 0 {
+		return &watchub.StarEmail{
+			Repo:  name,
+			Users: d,
+		}
+	}
+	return nil
 }

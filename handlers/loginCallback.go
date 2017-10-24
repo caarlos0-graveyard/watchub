@@ -69,7 +69,7 @@ func (h *LoginCallback) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	session, _ := h.session.Get(r, h.config.SessionName)
-	session.Values["user_id"] = userID
+	session.Values["user_id"] = int(userID)
 	session.Values["user_login"] = u.GetLogin()
 	session.Values["new_user"] = !exists
 	if err := session.Save(r, w); err != nil {

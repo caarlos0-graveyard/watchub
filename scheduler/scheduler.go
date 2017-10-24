@@ -81,11 +81,11 @@ func (s *Scheduler) process(exec watchub.Execution) {
 		log.WithError(err).Error("failed")
 		return
 	}
-	if err := s.CurrentStars.Save(exec.UserID, currentStars); err != nil {
+	if err := s.PreviousStars.Save(exec.UserID, currentStars); err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}
-	if err := s.CurrentFollowers.Save(exec.UserID, currentFollowers); err != nil {
+	if err := s.PreviousFollowers.Save(exec.UserID, currentFollowers); err != nil {
 		log.WithError(err).Error("failed")
 		return
 	}

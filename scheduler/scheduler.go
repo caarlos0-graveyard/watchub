@@ -25,7 +25,7 @@ type Scheduler struct {
 	Executions        watchub.ExecutionsSvc
 	PreviousStars     watchub.StargazersSvc
 	PreviousFollowers watchub.FollowersSvc
-	CurrentStars      watchub.StargazersSvc
+	CurrentStars      watchub.StargazersReadSvc
 	CurrentFollowers  watchub.FollowersReadSvc
 }
 

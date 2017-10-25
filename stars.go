@@ -7,9 +7,21 @@ type Star struct {
 	Stargazers []string `json:"stargazers"`
 }
 
+type StargazersReadSvc interface {
+	Get(execution Execution) ([]Star, error)
+}
+
+type StargazersCountSvc interface {
+	Count(userID int64) (int, error)
+}
+
+type StargazersWriteSvc interface {
+	Save(userID int64, stars []Star) error
+}
+
 // TODO: break this in smaller interfaces and compose
 type StargazersSvc interface {
-	Get(execution Execution) ([]Star, error)
-	Count(userID int64) (int, error)
-	Save(userID int64, stars []Star) error
+	StargazersWriteSvc
+	StargazersReadSvc
+	StargazersCountSvc
 }

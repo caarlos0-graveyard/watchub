@@ -11,7 +11,7 @@ import (
 	"golang.org/x/sync/errgroup"
 )
 
-var _ watchub.StargazersSvc = &StargazersSvc{}
+var _ watchub.StargazersReadSvc = &StargazersSvc{}
 
 func NewStargazersSvc(oauth *oauth.Oauth) *StargazersSvc {
 	return &StargazersSvc{
@@ -21,16 +21,6 @@ func NewStargazersSvc(oauth *oauth.Oauth) *StargazersSvc {
 
 type StargazersSvc struct {
 	oauth *oauth.Oauth
-}
-
-func (s *StargazersSvc) Count(userID int64) (int, error) {
-	// TODO: is this ever used?
-	return 0, errors.New("invalid operation")
-}
-
-func (s *StargazersSvc) Save(userID int64, stars []watchub.Star) error {
-	// TODO: is this ever used?
-	return errors.New("invalid operation")
 }
 
 func (s *StargazersSvc) Get(execution watchub.Execution) (result []watchub.Star, err error) {

@@ -9,7 +9,7 @@ import (
 	"github.com/pkg/errors"
 )
 
-var _ watchub.FollowersSvc = &FollowersSvc{}
+var _ watchub.FollowersReadSvc = &FollowersSvc{}
 
 func NewFollowersSvc(oauth *oauth.Oauth) *FollowersSvc {
 	return &FollowersSvc{
@@ -19,16 +19,6 @@ func NewFollowersSvc(oauth *oauth.Oauth) *FollowersSvc {
 
 type FollowersSvc struct {
 	oauth *oauth.Oauth
-}
-
-func (s *FollowersSvc) Count(userID int64) (count int, err error) {
-	// TODO: is this ever used?
-	return 0, errors.New("invalid op")
-}
-
-func (s *FollowersSvc) Save(userID int64, followers []string) error {
-	// TODO: is this ever used?
-	return errors.New("invalid op")
 }
 
 func (s *FollowersSvc) Get(execution watchub.Execution) ([]string, error) {

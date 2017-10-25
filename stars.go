@@ -19,7 +19,6 @@ type StargazersWriteSvc interface {
 	Save(userID int64, stars []Star) error
 }
 
-// TODO: break this in smaller interfaces and compose
 type StargazersSvc interface {
 	StargazersWriteSvc
 	StargazersReadSvc

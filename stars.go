@@ -7,8 +7,17 @@ type Star struct {
 	Stargazers []string `json:"stargazers"`
 }
 
+type Stars []Star
+
+func (stars Stars) Count() (count int) {
+	for _, star := range stars {
+		count += len(star.Stargazers)
+	}
+	return count
+}
+
 type StargazersReadSvc interface {
-	Get(execution Execution) ([]Star, error)
+	Get(execution Execution) (Stars, error)
 }
 
 type StargazersCountSvc interface {
@@ -16,7 +25,7 @@ type StargazersCountSvc interface {
 }
 
 type StargazersWriteSvc interface {
-	Save(userID int64, stars []Star) error
+	Save(userID int64, stars Stars) error
 }
 
 type StargazersSvc interface {

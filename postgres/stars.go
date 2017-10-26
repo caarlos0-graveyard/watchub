@@ -19,7 +19,7 @@ type StargazersSvc struct {
 	db *sqlx.DB
 }
 
-func (s *StargazersSvc) Get(execution watchub.Execution) (result []watchub.Star, err error) {
+func (s *StargazersSvc) Get(execution watchub.Execution) (result watchub.Stars, err error) {
 	var stars json.RawMessage
 	err = s.db.QueryRow(
 		"SELECT stars FROM tokens WHERE user_id = $1",
@@ -43,7 +43,7 @@ func (s *StargazersSvc) Count(userID int64) (count int, err error) {
 	return
 }
 
-func (s *StargazersSvc) Save(userID int64, stars []watchub.Star) error {
+func (s *StargazersSvc) Save(userID int64, stars watchub.Stars) error {
 	data, err := json.Marshal(stars)
 	if err != nil {
 		return err

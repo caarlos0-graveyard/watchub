@@ -23,7 +23,7 @@ type StargazersSvc struct {
 	oauth *oauth.Oauth
 }
 
-func (s *StargazersSvc) Get(execution watchub.Execution) (result []watchub.Star, err error) {
+func (s *StargazersSvc) Get(execution watchub.Execution) (result watchub.Stars, err error) {
 	var ctx = context.Background()
 	client, err := s.oauth.ClientFrom(ctx, execution.Token)
 	if err != nil {
@@ -73,7 +73,7 @@ func getStars(
 	ctx context.Context,
 	client *github.Client,
 	repos []*github.Repository,
-) (result []watchub.Star, err error) {
+) (result watchub.Stars, err error) {
 	var g errgroup.Group
 	var m sync.Mutex
 	var pool = make(chan bool, 5)

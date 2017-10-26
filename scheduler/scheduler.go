@@ -101,7 +101,7 @@ func (s *Scheduler) process(exec watchub.Execution) {
 			Login:     user.Login,
 			Email:     user.Email,
 			Followers: len(currentFollowers),
-			Stars:     countStars(currentStars),
+			Stars:     currentStars.Count(),
 			Repos:     len(currentStars),
 		})
 		return
@@ -120,7 +120,7 @@ func (s *Scheduler) process(exec watchub.Execution) {
 			Login:        user.Login,
 			Email:        user.Email,
 			Followers:    len(currentFollowers),
-			Stars:        countStars(currentStars),
+			Stars:        currentStars.Count(),
 			Repos:        len(currentStars),
 			NewFollowers: newFollowers,
 			Unfollowers:  unfollowers,
@@ -128,14 +128,6 @@ func (s *Scheduler) process(exec watchub.Execution) {
 			Unstars:      unstars,
 		},
 	)
-}
-
-// TODO: refactor this to a watchub.Stars type?
-func countStars(stars []watchub.Star) (count int) {
-	for _, star := range stars {
-		count += len(star.Stargazers)
-	}
-	return
 }
 
 func stargazerStatistics(stars, previousStars []watchub.Star) (newStars, unstars []watchub.StarEmail) {

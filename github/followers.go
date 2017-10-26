@@ -21,8 +21,8 @@ type FollowersSvc struct {
 	oauth *oauth.Oauth
 }
 
-func (s *FollowersSvc) Get(execution watchub.Execution) ([]string, error) {
-	var result []string
+func (s *FollowersSvc) Get(execution watchub.Execution) (watchub.Followers, error) {
+	var result watchub.Followers
 	var ctx = context.Background()
 	client, err := s.oauth.ClientFrom(ctx, execution.Token)
 	if err != nil {

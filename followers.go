@@ -5,14 +5,15 @@ type FollowersCountSvc interface {
 }
 
 type FollowersReadSvc interface {
-	Get(execution Execution) ([]string, error)
+	Get(execution Execution) (Followers, error)
 }
 
 type FollowersWriteSvc interface {
-	Save(userID int64, followers []string) error
+	Save(userID int64, followers Followers) error
 }
 
-// TODO: create a followers type here
+type Followers []string
+
 type FollowersSvc interface {
 	FollowersReadSvc
 	FollowersCountSvc

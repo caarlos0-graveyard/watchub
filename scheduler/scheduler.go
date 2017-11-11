@@ -95,7 +95,7 @@ func (s *Scheduler) process(exec watchub.Execution) {
 		return
 	}
 
-	// new user, welcome him!
+	// new user, send welcome!
 	if len(previousFollowers)+len(previousStars) == 0 {
 		s.Mailer.SendWelcome(watchub.WelcomeEmail{
 			Login:     user.Login,

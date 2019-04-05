@@ -23,6 +23,7 @@ import (
 	"github.com/gorilla/sessions"
 
 	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promauto"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
@@ -74,15 +75,34 @@ func main() {
 	)
 
 	// prometheus stuff
+	var requestCounter = promauto.NewCounterVec(prometheus.CounterOpts{
+		Namespace: "watchub",
+		Subsystem: "http",
+		Name:      "requests_total",
+		Help:      "total requests",
+	}, []string{"code", "method"})
+	var responseObserver = promauto.NewSummaryVec(prometheus.SummaryOpts{
+		Namespace: "watchub",
+		Subsystem: "http",
+		Name:      "responses",
+		Help:      "response times and counts",
+	}, []string{"code", "method"})
+
 	prometheus.MustRegister(scheduler.TimeGauge)
 	prometheus.MustRegister(scheduler.ErrorGauge)
-	mux.Handle("/metrics", promhttp.Handler())
+	mux.Methods(http.MethodGet).Path("/metrics").Handler(promhttp.Handler())
 
 	mux.PathPrefix("/debug").Handler(http.DefaultServeMux)
 
 	var handler = context.ClearHandler(
 		httplog.New(
-			mux,
+			promhttp.InstrumentHandlerDuration(
+				responseObserver,
+				promhttp.InstrumentHandlerCounter(
+					requestCounter,
+					mux,
+				),
+			),
 		),
 	)
 

@@ -6,8 +6,7 @@ require (
 	github.com/aokoli/goutils v1.0.1 // indirect
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v0.0.0-20170222070341-a97903d84569
-	github.com/caarlos0/env v0.0.0-20161013201842-d0de832ed2fb
-	github.com/davecgh/go-spew v0.0.0-20160907170601-6d212800a42e // indirect
+	github.com/caarlos0/env/v6 v6.0.0
 	github.com/go-logfmt/logfmt v0.3.0 // indirect
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/google/go-github v0.0.0-20170401000335-12363ffc1001
@@ -27,7 +26,6 @@ require (
 	github.com/mattn/go-sqlite3 v1.10.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.0-20170925234030-a7a4c189eb47 // indirect
 	github.com/pkg/errors v0.8.0
-	github.com/pmezard/go-difflib v0.0.0-20151028094244-d8ed2627bdf0 // indirect
 	github.com/prometheus/client_golang v0.9.2
 	github.com/robfig/cron v0.0.0-20140119015047-b024fc5ea0e3
 	github.com/russross/blackfriday v0.0.0-20171011182219-6d1ef893fcb0 // indirect
@@ -35,7 +33,7 @@ require (
 	github.com/sendgrid/rest v2.3.1+incompatible // indirect
 	github.com/sendgrid/sendgrid-go v3.3.1+incompatible
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
-	github.com/stretchr/testify v1.1.4
+	github.com/stretchr/testify v1.3.0
 	golang.org/x/crypto v0.0.0-20171108091819-6a293f2d4b14 // indirect
 	golang.org/x/oauth2 v0.0.0-20170321013421-7fdf09982454
 	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f

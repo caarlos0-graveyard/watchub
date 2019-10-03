@@ -3,7 +3,7 @@ module github.com/caarlos0/watchub
 require (
 	github.com/Masterminds/semver v1.2.2 // indirect
 	github.com/Masterminds/sprig v2.14.0+incompatible // indirect
-	github.com/aokoli/goutils v1.0.1 // indirect
+	github.com/aokoli/goutils v1.1.0 // indirect
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v0.0.0-20170222070341-a97903d84569
 	github.com/caarlos0/env/v6 v6.0.0
@@ -40,3 +40,5 @@ require (
 	google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14 // indirect
 	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
+
+go 1.13

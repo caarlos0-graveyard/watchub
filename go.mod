@@ -12,7 +12,7 @@ require (
 	github.com/google/go-github v0.0.0-20170401000335-12363ffc1001
 	github.com/google/go-querystring v0.0.0-20170111101155-53e6ce116135 // indirect
 	github.com/gorilla/context v1.1.1
-	github.com/gorilla/mux v1.3.0
+	github.com/gorilla/mux v1.7.3
 	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/gorilla/sessions v0.0.0-20160922145804-ca9ada445741
 	github.com/huandu/xstrings v0.0.0-20170908061042-d6590c0c31d1 // indirect

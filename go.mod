@@ -34,7 +34,7 @@ require (
 	github.com/sendgrid/sendgrid-go v3.3.1+incompatible
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	github.com/stretchr/testify v1.4.0
-	golang.org/x/crypto v0.0.0-20171108091819-6a293f2d4b14 // indirect
+	golang.org/x/crypto v0.0.0-20191002192127-34f69633bfdc // indirect
 	golang.org/x/oauth2 v0.0.0-20170321013421-7fdf09982454
 	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
 	google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14 // indirect

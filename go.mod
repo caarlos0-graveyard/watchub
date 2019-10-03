@@ -7,7 +7,7 @@ require (
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v0.0.0-20170222070341-a97903d84569
 	github.com/caarlos0/env/v6 v6.1.0
-	github.com/go-logfmt/logfmt v0.3.0 // indirect
+	github.com/go-logfmt/logfmt v0.4.0 // indirect
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/google/go-github v0.0.0-20170401000335-12363ffc1001
 	github.com/google/go-querystring v0.0.0-20170111101155-53e6ce116135 // indirect
@@ -19,7 +19,6 @@ require (
 	github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab // indirect
 	github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630 // indirect
 	github.com/jmoiron/sqlx v0.0.0-20170308171622-8ed836a8adb6
-	github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 // indirect
 	github.com/lib/pq v0.0.0-20170324204654-2704adc878c2
 	github.com/matcornic/hermes v1.0.1
 	github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767 // indirect

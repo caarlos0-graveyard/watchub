@@ -38,6 +38,7 @@ github.com/huandu/xstrings v0.0.0-20170908061042-d6590c0c31d1 h1:5sbhABS5wzLMXC6
 github.com/huandu/xstrings v0.0.0-20170908061042-d6590c0c31d1/go.mod h1:4qWG/gcEcfX4z/mBDHJ++3ReCw9ibxbsNJbcucJdbSo=
 github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab h1:k/Biv+LJL35wkk0Hveko1nj7as4tSHkHdZaNlzn/gcQ=
 github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab/go.mod h1:2EnlNZ0deacrJVfApfmtdGgDfMuh/nq6Ok1EcJh5FfA=
+github.com/imdario/mergo v0.3.8/go.mod h1:2EnlNZ0deacrJVfApfmtdGgDfMuh/nq6Ok1EcJh5FfA=
 github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630 h1:S9BtFz0PeTnUIIIdZwoXTVz9m5JKbUhtEfwnY3mqDug=
 github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630/go.mod h1:CVKlgaMiht+LXvHG173ujK6JUhZXKb2u/BQtjPDIvyk=
 github.com/jmoiron/sqlx v0.0.0-20170308171622-8ed836a8adb6 h1:S+KxiRJQxqQ+sQ3uTIdIi4Puu193OxwGntCU4QEiE3g=

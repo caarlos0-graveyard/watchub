@@ -16,7 +16,7 @@ require (
 	github.com/gorilla/securecookie v1.1.1 // indirect
 	github.com/gorilla/sessions v0.0.0-20160922145804-ca9ada445741
 	github.com/huandu/xstrings v0.0.0-20170908061042-d6590c0c31d1 // indirect
-	github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab // indirect
+	github.com/imdario/mergo v0.3.8 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630 // indirect
 	github.com/jmoiron/sqlx v0.0.0-20170308171622-8ed836a8adb6
 	github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 // indirect

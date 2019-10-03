@@ -89,6 +89,8 @@ golang.org/x/oauth2 v0.0.0-20170321013421-7fdf09982454 h1:qH7SPXL1bLgpFB+ycaFjqQ
 golang.org/x/oauth2 v0.0.0-20170321013421-7fdf09982454/go.mod h1:N/0e6XlmueqKjAGxoOufVs8QHGRruUQn6yWY3a++T0U=
 golang.org/x/sync v0.0.0-20181108010431-42b317875d0f h1:Bl/8QSvNqXvPGPGXa2z5xUTmV7VDcZyvRZ+QQXkXTZQ=
 golang.org/x/sync v0.0.0-20181108010431-42b317875d0f/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
+golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e h1:vcxGaoTs7kV8m5Np9uUNQin4BrLOthgV7252N8V+FwY=
+golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e/go.mod h1:RxMgew5VJxzue5/jJTE5uejpjVlOe/izrB70Jof72aM=
 google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14 h1:dUlZaxKaV5EQM4rcjViu2Z4uWM/Ay7/jtOcMoqEEHB8=
 google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14/go.mod h1:EbEs0AVv82hx2wNQdGPgUI5lhzA/G0D9YwlJXL52JkM=
 gopkg.in/check.v1 v0.0.0-20161208181325-20d25e280405 h1:yhCVgyC4o1eVCa2tZl7eS0r+SDo693bJlVdllGtEeKM=

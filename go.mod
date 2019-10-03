@@ -36,7 +36,9 @@ require (
 	github.com/stretchr/testify v1.3.0
 	golang.org/x/crypto v0.0.0-20171108091819-6a293f2d4b14 // indirect
 	golang.org/x/oauth2 v0.0.0-20170321013421-7fdf09982454
-	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
+	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14 // indirect
 	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
+
+go 1.13

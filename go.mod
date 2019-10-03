@@ -6,7 +6,7 @@ require (
 	github.com/aokoli/goutils v1.0.1 // indirect
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v0.0.0-20170222070341-a97903d84569
-	github.com/caarlos0/env/v6 v6.0.0
+	github.com/caarlos0/env/v6 v6.1.0
 	github.com/go-logfmt/logfmt v0.3.0 // indirect
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/google/go-github v0.0.0-20170401000335-12363ffc1001
@@ -33,10 +33,11 @@ require (
 	github.com/sendgrid/rest v2.3.1+incompatible // indirect
 	github.com/sendgrid/sendgrid-go v3.3.1+incompatible
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
-	github.com/stretchr/testify v1.3.0
+	github.com/stretchr/testify v1.4.0
 	golang.org/x/crypto v0.0.0-20171108091819-6a293f2d4b14 // indirect
 	golang.org/x/oauth2 v0.0.0-20170321013421-7fdf09982454
 	golang.org/x/sync v0.0.0-20181108010431-42b317875d0f
 	google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14 // indirect
-	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
+
+go 1.13

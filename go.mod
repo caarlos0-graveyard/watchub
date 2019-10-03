@@ -17,7 +17,7 @@ require (
 	github.com/gorilla/sessions v0.0.0-20160922145804-ca9ada445741
 	github.com/huandu/xstrings v0.0.0-20170908061042-d6590c0c31d1 // indirect
 	github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab // indirect
-	github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630 // indirect
+	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 // indirect
 	github.com/jmoiron/sqlx v0.0.0-20170308171622-8ed836a8adb6
 	github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 // indirect
 	github.com/lib/pq v0.0.0-20170324204654-2704adc878c2
@@ -40,3 +40,5 @@ require (
 	google.golang.org/appengine v0.0.0-20170321222430-56d253d1dd14 // indirect
 	gopkg.in/yaml.v2 v2.2.2 // indirect
 )
+
+go 1.13

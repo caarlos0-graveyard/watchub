@@ -38,6 +38,8 @@ github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab h1:k/Biv+LJL35wkk0Hv
 github.com/imdario/mergo v0.0.0-20171009183408-7fe0c75c13ab/go.mod h1:2EnlNZ0deacrJVfApfmtdGgDfMuh/nq6Ok1EcJh5FfA=
 github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630 h1:S9BtFz0PeTnUIIIdZwoXTVz9m5JKbUhtEfwnY3mqDug=
 github.com/jaytaylor/html2text v0.0.0-20170918155622-0ee88d300630/go.mod h1:CVKlgaMiht+LXvHG173ujK6JUhZXKb2u/BQtjPDIvyk=
+github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 h1:jTkyeF7NZ5oIr0ESmcrpiDgAfoidCBF4F5kJhjtaRwE=
+github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43/go.mod h1:CVKlgaMiht+LXvHG173ujK6JUhZXKb2u/BQtjPDIvyk=
 github.com/jmoiron/sqlx v0.0.0-20170308171622-8ed836a8adb6 h1:S+KxiRJQxqQ+sQ3uTIdIi4Puu193OxwGntCU4QEiE3g=
 github.com/jmoiron/sqlx v0.0.0-20170308171622-8ed836a8adb6/go.mod h1:IiEW3SEiiErVyFdH8NTuWjSifiEQKUoyK3LNqr2kCHU=
 github.com/kr/logfmt v0.0.0-20140226030751-b84e30acd515 h1:T+h1c/A9Gawja4Y9mFVWj2vyii2bbUNDw3kt9VxK2EY=

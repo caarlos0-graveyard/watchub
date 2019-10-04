@@ -5,7 +5,7 @@ import (
 
 	"github.com/caarlos0/watchub/config"
 	"github.com/caarlos0/watchub/shared/token"
-	"github.com/google/go-github/github"
+	"github.com/google/go-github/v28/github"
 	"golang.org/x/oauth2"
 	githuboauth "golang.org/x/oauth2/github"
 )

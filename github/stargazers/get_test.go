@@ -7,7 +7,7 @@ import (
 	"testing"
 
 	"github.com/caarlos0/watchub/github/stargazers"
-	"github.com/google/go-github/github"
+	"github.com/google/go-github/v28/github"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/oauth2"
 )

@@ -10,7 +10,7 @@ import (
 	"github.com/apex/log"
 	"github.com/caarlos0/watchub/config"
 	"github.com/caarlos0/watchub/shared/dto"
-	"github.com/matcornic/hermes"
+	"github.com/matcornic/hermes/v2"
 	sendgrid "github.com/sendgrid/sendgrid-go"
 	"github.com/sendgrid/sendgrid-go/helpers/mail"
 )

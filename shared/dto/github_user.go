@@ -1,7 +1,7 @@
 package dto
 
 type GitHubUser struct {
-	ID        int
+	ID        int64
 	Login     string
 	Email     string
 	Followers []string

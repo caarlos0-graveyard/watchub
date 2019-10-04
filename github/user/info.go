@@ -6,7 +6,7 @@ import (
 	"github.com/caarlos0/watchub/github/email"
 	"github.com/caarlos0/watchub/github/followers"
 	"github.com/caarlos0/watchub/shared/dto"
-	"github.com/google/go-github/github"
+	"github.com/google/go-github/v28/github"
 )
 
 // Info gets a github user info, like login, email and followers

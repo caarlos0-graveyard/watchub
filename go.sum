@@ -48,6 +48,8 @@ github.com/lib/pq v0.0.0-20170324204654-2704adc878c2 h1:2imqQk4oITdu2OSQcxO1A/yR
 github.com/lib/pq v0.0.0-20170324204654-2704adc878c2/go.mod h1:5WUZQaWbwv1U+lTReE5YruASi9Al49XbQIvNi/34Woo=
 github.com/matcornic/hermes v1.0.1 h1:RDO3WERNVhxjmt5qccBliSjeO9untUMnZY0mcD6EqZ0=
 github.com/matcornic/hermes v1.0.1/go.mod h1:lujJomb016Xjv8wBnWlNvUdtmvowjjfkqri5J/+1hYc=
+github.com/matcornic/hermes v1.2.0 h1:AuqZpYcTOtTB7cahdevLfnhIpfzmpqw5Czv8vpdnFDU=
+github.com/matcornic/hermes v1.2.0/go.mod h1:lujJomb016Xjv8wBnWlNvUdtmvowjjfkqri5J/+1hYc=
 github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767 h1:Nk2R0tWpD2RdkQ+53zE6kWnSGuhQyDlnOs2MPiqVubE=
 github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767/go.mod h1:LwmH8dsx7+W8Uxz3IHJYH5QSwggIsqBzpuz5H//U1FU=
 github.com/mattn/go-sqlite3 v1.10.0 h1:jbhqpg7tQe4SupckyijYiy0mJJ/pRyHvXf7JdWK860o=

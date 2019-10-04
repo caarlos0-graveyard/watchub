@@ -1,8 +1,9 @@
 module github.com/caarlos0/watchub
 
 require (
+	github.com/Masterminds/goutils v1.1.0 // indirect
 	github.com/Masterminds/semver v1.2.2 // indirect
-	github.com/Masterminds/sprig v2.14.0+incompatible // indirect
+	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/aokoli/goutils v1.0.1 // indirect
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v0.0.0-20170222070341-a97903d84569
@@ -11,6 +12,7 @@ require (
 	github.com/go-sql-driver/mysql v1.4.1 // indirect
 	github.com/google/go-github v0.0.0-20170401000335-12363ffc1001
 	github.com/google/go-querystring v0.0.0-20170111101155-53e6ce116135 // indirect
+	github.com/google/uuid v1.1.1 // indirect
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/mux v1.3.0
 	github.com/gorilla/securecookie v1.1.1 // indirect
@@ -24,6 +26,7 @@ require (
 	github.com/matcornic/hermes v1.0.1
 	github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767 // indirect
 	github.com/mattn/go-sqlite3 v1.10.0 // indirect
+	github.com/mitchellh/copystructure v1.0.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.0-20170925234030-a7a4c189eb47 // indirect
 	github.com/pkg/errors v0.8.0
 	github.com/prometheus/client_golang v0.9.2

@@ -31,7 +31,7 @@ require (
 	github.com/russross/blackfriday v0.0.0-20171011182219-6d1ef893fcb0 // indirect
 	github.com/satori/go.uuid v1.1.0 // indirect
 	github.com/sendgrid/rest v2.3.1+incompatible // indirect
-	github.com/sendgrid/sendgrid-go v3.3.1+incompatible
+	github.com/sendgrid/sendgrid-go v3.5.0+incompatible
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	github.com/stretchr/testify v1.4.0
 	golang.org/x/crypto v0.0.0-20171108091819-6a293f2d4b14 // indirect

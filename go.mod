@@ -23,7 +23,7 @@ require (
 	github.com/lib/pq v0.0.0-20170324204654-2704adc878c2
 	github.com/matcornic/hermes v1.0.1
 	github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767 // indirect
-	github.com/mattn/go-sqlite3 v1.10.0 // indirect
+	github.com/mattn/go-sqlite3 v1.11.0 // indirect
 	github.com/olekukonko/tablewriter v0.0.0-20170925234030-a7a4c189eb47 // indirect
 	github.com/pkg/errors v0.8.0
 	github.com/prometheus/client_golang v0.9.2

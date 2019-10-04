@@ -29,7 +29,7 @@ require (
 	github.com/prometheus/client_golang v0.9.2
 	github.com/robfig/cron v0.0.0-20140119015047-b024fc5ea0e3
 	github.com/russross/blackfriday v0.0.0-20171011182219-6d1ef893fcb0 // indirect
-	github.com/satori/go.uuid v1.1.0 // indirect
+	github.com/satori/go.uuid v1.2.0 // indirect
 	github.com/sendgrid/rest v2.3.1+incompatible // indirect
 	github.com/sendgrid/sendgrid-go v3.3.1+incompatible
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect

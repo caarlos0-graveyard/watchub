@@ -2,7 +2,7 @@ module github.com/caarlos0/watchub
 
 require (
 	github.com/Masterminds/goutils v1.1.0 // indirect
-	github.com/Masterminds/semver v1.5.0 // indirect
+	github.com/Masterminds/semver/v3 v3.0.1 // indirect
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v1.1.1

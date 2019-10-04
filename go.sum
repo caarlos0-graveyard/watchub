@@ -50,6 +50,7 @@ github.com/matcornic/hermes v1.0.1 h1:RDO3WERNVhxjmt5qccBliSjeO9untUMnZY0mcD6EqZ
 github.com/matcornic/hermes v1.0.1/go.mod h1:lujJomb016Xjv8wBnWlNvUdtmvowjjfkqri5J/+1hYc=
 github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767 h1:Nk2R0tWpD2RdkQ+53zE6kWnSGuhQyDlnOs2MPiqVubE=
 github.com/mattn/go-runewidth v0.0.0-20170510074858-97311d9f7767/go.mod h1:LwmH8dsx7+W8Uxz3IHJYH5QSwggIsqBzpuz5H//U1FU=
+github.com/mattn/go-runewidth v0.0.4/go.mod h1:LwmH8dsx7+W8Uxz3IHJYH5QSwggIsqBzpuz5H//U1FU=
 github.com/mattn/go-sqlite3 v1.10.0 h1:jbhqpg7tQe4SupckyijYiy0mJJ/pRyHvXf7JdWK860o=
 github.com/mattn/go-sqlite3 v1.10.0/go.mod h1:FPy6KqzDD04eiIsT53CuJW3U88zkxoIYsOqkbpncsNc=
 github.com/matttproud/golang_protobuf_extensions v1.0.1 h1:4hp9jkHxhMHkqkrB3Ix0jegS5sx/RkqARlsWZ6pIwiU=

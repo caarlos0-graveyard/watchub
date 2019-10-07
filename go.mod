@@ -34,7 +34,7 @@ require (
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	golang.org/x/sys v0.0.0-20191003212358-c178f38b412c // indirect
-	google.golang.org/appengine v1.6.4 // indirect
+	google.golang.org/appengine v1.6.5 // indirect
 )
 
 go 1.13

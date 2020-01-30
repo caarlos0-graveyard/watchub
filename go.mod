@@ -15,7 +15,7 @@ require (
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 // indirect
 	github.com/jmoiron/sqlx v1.2.0
 	github.com/lib/pq v1.2.0
-	github.com/matcornic/hermes/v2 v2.0.2
+	github.com/matcornic/hermes/v2 v2.1.0
 	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect
 	github.com/mitchellh/reflectwalk v1.0.1 // indirect

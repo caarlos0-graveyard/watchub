@@ -6,7 +6,7 @@ require (
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/apex/httplog v0.0.0-20170124183939-d677fdf2ae1f
 	github.com/apex/log v1.1.1
-	github.com/caarlos0/env/v6 v6.1.0
+	github.com/caarlos0/env/v6 v6.2.1
 	github.com/google/go-github/v28 v28.1.1
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/mux v1.7.3

@@ -14,7 +14,7 @@ require (
 	github.com/imdario/mergo v0.3.8 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 // indirect
 	github.com/jmoiron/sqlx v1.2.0
-	github.com/lib/pq v1.2.0
+	github.com/lib/pq v1.5.0
 	github.com/matcornic/hermes/v2 v2.0.2
 	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect

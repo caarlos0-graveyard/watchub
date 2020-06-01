@@ -16,7 +16,7 @@ require (
 	github.com/imdario/mergo v0.3.8 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20190408195923-01ec452cbe43 // indirect
 	github.com/jmoiron/sqlx v1.2.0
-	github.com/lib/pq v1.5.2
+	github.com/lib/pq v1.6.0
 	github.com/matcornic/hermes/v2 v2.0.2
 	github.com/mattn/go-runewidth v0.0.4 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect
@@ -27,8 +27,6 @@ require (
 	github.com/sendgrid/rest v2.4.1+incompatible // indirect
 	github.com/sendgrid/sendgrid-go v3.5.0+incompatible
 	github.com/stretchr/testify v1.5.1
-	golang.org/x/crypto v0.0.0-20191002192127-34f69633bfdc // indirect
-	golang.org/x/net v0.0.0-20191003171128-d98b1b443823 // indirect
 	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
 	golang.org/x/sync v0.0.0-20190911185100-cd5d95a43a6e
 	google.golang.org/appengine v1.6.4 // indirect

@@ -1,7 +1,7 @@
 package dto
 
 type PageUserData struct {
-	ID    int
+	ID    int64
 	Login string
 	IsNew bool
 }

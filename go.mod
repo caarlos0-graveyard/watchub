@@ -8,7 +8,6 @@ require (
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.2.0 // indirect
-	github.com/apex/httplog v1.0.0
 	github.com/apex/log v1.3.0
 	github.com/caarlos0/env/v6 v6.2.2
 	github.com/go-logfmt/logfmt v0.5.0 // indirect

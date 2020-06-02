@@ -24,12 +24,8 @@ github.com/andybalholm/cascadia v1.2.0 h1:vuRCkM5Ozh/BfmsaTm26kbjm0mIOM3yS5Ek/F5
 github.com/andybalholm/cascadia v1.2.0/go.mod h1:YCyR8vOZT9aZ1CHEd8ap0gMVm2aFgxBp0T0eFw1RUQY=
 github.com/aokoli/goutils v1.0.1 h1:7fpzNGoJ3VA8qcrm++XEE1QUe0mIwNeLa02Nwq7RDkg=
 github.com/aokoli/goutils v1.0.1/go.mod h1:SijmP0QR8LtwsmDs8Yii5Z/S4trXFGFC2oO5g9DP+DQ=
-github.com/apex/httplog v1.0.0 h1:5uJFk6Ga4rRGG3Xt+ldofR5/RCgSzRiQn1WRXe2TXt0=
-github.com/apex/httplog v1.0.0/go.mod h1:cjjeMniS2rpajsvqBd2X521ua0Tmwtt4y0avzGRIG9M=
-github.com/apex/log v1.1.2/go.mod h1:SyfRweFO+TlkIJ3DVizTSeI1xk7jOIIqOnUPZQTTsww=
 github.com/apex/log v1.3.0 h1:1fyfbPvUwD10nMoh3hY6MXzvZShJQn9/ck7ATgAt5pA=
 github.com/apex/log v1.3.0/go.mod h1:jd8Vpsr46WAe3EZSQ/IUMs2qQD/GOycT5rPWCO1yGcs=
-github.com/apex/logs v0.0.3/go.mod h1:XzxuLZ5myVHDy9SAmYpamKKRNApGj54PfYLcFrXqDwo=
 github.com/apex/logs v0.0.4/go.mod h1:XzxuLZ5myVHDy9SAmYpamKKRNApGj54PfYLcFrXqDwo=
 github.com/aphistic/golf v0.0.0-20180712155816-02c07f170c5a/go.mod h1:3NqKYiepwy8kCu4PNA+aP7WUV72eXWJeP9/r3/K9aLE=
 github.com/aphistic/sweet v0.2.0/go.mod h1:fWDlIh/isSE9n6EPsRmC0det+whmX6dJid3stzu0Xys=

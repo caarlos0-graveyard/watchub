@@ -2,13 +2,11 @@ package main
 
 import (
 	"net/http"
-	"time"
-
 	_ "net/http/pprof"
+	"time"
 
 	_ "github.com/lib/pq"
 
-	"github.com/apex/httplog"
 	"github.com/apex/log"
 	"github.com/apex/log/handlers/logfmt"
 
@@ -39,6 +37,13 @@ func main() {
 
 	// oauth
 	var session = sessions.NewCookieStore([]byte(config.SessionSecret))
+	session.Options = &sessions.Options{
+		MaxAge:   3600,
+		Secure:   true,
+		HttpOnly: true,
+		SameSite: http.SameSiteLaxMode,
+		Path:     "/",
+	}
 	var oauth = oauth.New(config)
 	var loginCtrl = controllers.NewLogin(config, session, oauth, store)
 
@@ -95,13 +100,11 @@ func main() {
 	mux.PathPrefix("/debug").Handler(http.DefaultServeMux)
 
 	var handler = context.ClearHandler(
-		httplog.New(
-			promhttp.InstrumentHandlerDuration(
-				responseObserver,
-				promhttp.InstrumentHandlerCounter(
-					requestCounter,
-					mux,
-				),
+		promhttp.InstrumentHandlerDuration(
+			responseObserver,
+			promhttp.InstrumentHandlerCounter(
+				requestCounter,
+				mux,
 			),
 		),
 	)

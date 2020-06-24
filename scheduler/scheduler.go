@@ -94,6 +94,8 @@ func (s *Scheduler) Stop() {
 	s.cron.Stop()
 }
 
+// nolint: funlen
+// TODO: refactor this.
 func process(
 	exec model.Execution,
 	config config.Config,

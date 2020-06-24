@@ -38,7 +38,7 @@ func (ctrl *Index) Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	if data.User.ID > 0 {
 		var err error
-		var id = int64(data.User.ID)
+		var id = data.User.ID
 		data.StarCount, err = ctrl.store.StarCount(id)
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)

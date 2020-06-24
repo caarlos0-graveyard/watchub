@@ -35,9 +35,9 @@ jobs:
         run: |
           make setup
       -
-        name: Make test
+        name: Make CI
         run: |
-          make test
+          make ci
       -
         name: Upload coverage
         uses: codecov/codecov-action@v1

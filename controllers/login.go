@@ -42,7 +42,10 @@ func (ctrl *Login) Handler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, url, http.StatusTemporaryRedirect)
 }
 
-// CallbackHandler handles /login/callback
+// CallbackHandler handles /login/callback.
+//
+// TODO: refactor this.
+// nolint: funlen
 func (ctrl *Login) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 	var state = r.FormValue("state")
 	var code = r.FormValue("code")
@@ -66,14 +69,14 @@ func (ctrl *Login) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	exists, _ := ctrl.store.UserExist(int64(*u.ID))
-	if err := ctrl.store.SaveToken(int64(*u.ID), token); err != nil {
+	exists, _ := ctrl.store.UserExist(*u.ID)
+	if err := ctrl.store.SaveToken(*u.ID, token); err != nil {
 		log.WithError(err).Error("failed to save token")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	if !exists {
-		if err := ctrl.store.Schedule(int64(*u.ID), time.Now()); err != nil {
+		if err := ctrl.store.Schedule(*u.ID, time.Now()); err != nil {
 			log.WithError(err).Error("failed to schedule sync")
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

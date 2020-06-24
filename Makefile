@@ -30,7 +30,7 @@ fmt:
 
 # Run all the linters
 lint:
-	./bin/golangci-lint run --tests=false --enable-all ./...
+	golangci-lint run --enable-all --disable godox --disable testpackage --disable wsl --disable gomnd --disable godot --fix ./...
 .PHONY: lint
 
 # Run all the tests and code checks

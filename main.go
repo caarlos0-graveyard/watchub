@@ -1,8 +1,9 @@
 package main
 
+//_ "net/http/pprof"
+
 import (
 	"net/http"
-	_ "net/http/pprof"
 	"time"
 
 	_ "github.com/lib/pq"
@@ -25,6 +26,8 @@ import (
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
+// TODO: refactor this.
+// nolint: funlen
 func main() {
 	log.SetHandler(logfmt.Default)
 	log.SetLevel(log.InfoLevel)

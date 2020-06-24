@@ -34,12 +34,12 @@ func NewSchedule(
 // Handler handles /Schedule
 func (ctrl *Schedule) Handler(w http.ResponseWriter, r *http.Request) {
 	session, _ := ctrl.session.Get(r, ctrl.config.SessionName)
-	id, _ := session.Values["user_id"].(int)
+	id, _ := session.Values["user_id"].(int64)
 	if session.IsNew || id == 0 {
 		http.Error(w, "not logged in", http.StatusForbidden)
 		return
 	}
-	if err := ctrl.store.Schedule(int64(id), time.Now()); err != nil {
+	if err := ctrl.store.Schedule(id, time.Now()); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

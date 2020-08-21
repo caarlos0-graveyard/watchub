@@ -8,7 +8,7 @@ require (
 	github.com/Masterminds/sprig v2.22.0+incompatible // indirect
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.2.0 // indirect
-	github.com/apex/log v1.4.0
+	github.com/apex/log v1.9.0
 	github.com/caarlos0/env/v6 v6.3.0
 	github.com/go-logfmt/logfmt v0.5.0 // indirect
 	github.com/google/go-github/v28 v28.1.1
@@ -30,7 +30,7 @@ require (
 	github.com/robfig/cron v1.2.0
 	github.com/sendgrid/rest v2.6.0+incompatible // indirect
 	github.com/sendgrid/sendgrid-go v3.6.0+incompatible
-	github.com/stretchr/testify v1.5.1
+	github.com/stretchr/testify v1.6.1
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9 // indirect
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d

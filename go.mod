@@ -29,7 +29,7 @@ require (
 	github.com/prometheus/client_golang v1.7.1
 	github.com/robfig/cron v1.2.0
 	github.com/sendgrid/rest v2.6.0+incompatible // indirect
-	github.com/sendgrid/sendgrid-go v3.6.0+incompatible
+	github.com/sendgrid/sendgrid-go v3.6.3+incompatible
 	github.com/stretchr/testify v1.6.1
 	golang.org/x/crypto v0.0.0-20200622213623-75b288015ac9 // indirect
 	golang.org/x/net v0.0.0-20200602114024-627f9648deb9 // indirect

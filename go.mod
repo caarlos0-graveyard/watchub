@@ -13,7 +13,7 @@ require (
 	github.com/google/go-github/v28 v28.1.1
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/mux v1.7.4
-	github.com/gorilla/sessions v1.2.0
+	github.com/gorilla/sessions v1.2.1
 	github.com/huandu/xstrings v1.3.2 // indirect
 	github.com/imdario/mergo v0.3.9 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20200412013138-3577fbdbcff7 // indirect

@@ -12,7 +12,7 @@ require (
 	github.com/caarlos0/env/v6 v6.3.0
 	github.com/google/go-github/v28 v28.1.1
 	github.com/gorilla/context v1.1.1
-	github.com/gorilla/mux v1.7.4
+	github.com/gorilla/mux v1.8.0
 	github.com/gorilla/sessions v1.2.1
 	github.com/huandu/xstrings v1.3.2 // indirect
 	github.com/imdario/mergo v0.3.9 // indirect

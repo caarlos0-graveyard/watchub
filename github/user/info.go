@@ -24,8 +24,8 @@ func Info(ctx context.Context, client *github.Client) (user dto.GitHubUser, err 
 		return user, err
 	}
 
-	user.ID = *u.ID
-	user.Login = *u.Login
+	user.ID = u.GetID()
+	user.Login = u.GetLogin()
 	user.Email = email
 	user.Followers = ToLoginArray(followers)
 	return

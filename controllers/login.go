@@ -69,14 +69,14 @@ func (ctrl *Login) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	exists, _ := ctrl.store.UserExist(*u.ID)
-	if err := ctrl.store.SaveToken(*u.ID, token); err != nil {
+	exists, _ := ctrl.store.UserExist(u.GetID())
+	if err := ctrl.store.SaveToken(u.GetID(), token); err != nil {
 		log.WithError(err).Error("failed to save token")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 	if !exists {
-		if err := ctrl.store.Schedule(*u.ID, time.Now()); err != nil {
+		if err := ctrl.store.Schedule(u.GetID(), time.Now()); err != nil {
 			log.WithError(err).Error("failed to schedule sync")
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -88,8 +88,8 @@ func (ctrl *Login) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	session.Values["user_id"] = *u.ID
-	session.Values["user_login"] = *u.Login
+	session.Values["user_id"] = u.GetID()
+	session.Values["user_login"] = u.GetLogin()
 	session.Values["new_user"] = !exists
 	if err := session.Save(r, w); err != nil {
 		log.WithError(err).Error("fail to save session")

@@ -42,7 +42,6 @@ func main() {
 	var session = sessions.NewCookieStore([]byte(config.SessionSecret))
 	session.Options = &sessions.Options{
 		MaxAge:   3600,
-		Secure:   true,
 		HttpOnly: true,
 		SameSite: http.SameSiteLaxMode,
 		Path:     "/",

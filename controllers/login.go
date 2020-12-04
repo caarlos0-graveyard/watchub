@@ -82,9 +82,10 @@ func (ctrl *Login) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
-	session, err := ctrl.session.Get(r, ctrl.config.SessionName)
+
+	session, err := ctrl.session.New(r, ctrl.config.SessionName)
 	if err != nil {
-		log.WithError(err).Error("fail to get session")
+		log.WithError(err).Error("fail to create session")
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

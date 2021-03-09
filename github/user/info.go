@@ -2,6 +2,8 @@ package user
 
 import (
 	"context"
+	"errors"
+	"fmt"
 
 	"github.com/caarlos0/watchub/github/email"
 	"github.com/caarlos0/watchub/github/followers"
@@ -9,10 +11,15 @@ import (
 	"github.com/google/go-github/v28/github"
 )
 
+var ErrBadCreds = errors.New("bad credentials")
+
 // Info gets a github user info, like login, email and followers
 func Info(ctx context.Context, client *github.Client) (user dto.GitHubUser, err error) {
-	u, _, err := client.Users.Get(ctx, "")
+	u, resp, err := client.Users.Get(ctx, "")
 	if err != nil {
+		if resp.StatusCode == 401 {
+			return user, fmt.Errorf("%w: %s", ErrBadCreds, err.Error())
+		}
 		return user, err
 	}
 	email, err := email.Get(ctx, client)

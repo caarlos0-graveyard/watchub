@@ -17,6 +17,7 @@ import (
 	"github.com/caarlos0/watchub/shared/dto"
 	"github.com/caarlos0/watchub/shared/model"
 	"github.com/gorilla/sessions"
+	"github.com/pkg/errors"
 	"github.com/prometheus/client_golang/prometheus"
 	"github.com/robfig/cron"
 )
@@ -113,13 +114,19 @@ func process(
 	}
 
 	log.Info("started processing")
-	user, err := user.Info(ctx, client)
+	usr, err := user.Info(ctx, client)
 	if err != nil {
 		ErrorGauge.WithLabelValues(fmt.Sprintf("%d", exec.UserID)).Inc()
 		log.WithError(err).Error("failed to get user info")
+		if errors.Is(err, user.ErrBadCreds) {
+			if err := store.Disable(exec.UserID); err != nil {
+				ErrorGauge.WithLabelValues(fmt.Sprintf("%d", exec.UserID)).Inc()
+				log.WithError(err).Error("failed to disable user")
+			}
+		}
 		return
 	}
-	log = log.WithField("email", user.Email)
+	log = log.WithField("email", usr.Email)
 
 	followers, err := store.GetFollowers(exec.UserID)
 	if err != nil {
@@ -127,7 +134,7 @@ func process(
 		log.WithError(err).Error("failed to get user followers from db")
 		return
 	}
-	if err = store.SaveFollowers(exec.UserID, user.Followers); err != nil {
+	if err = store.SaveFollowers(exec.UserID, usr.Followers); err != nil {
 		ErrorGauge.WithLabelValues(fmt.Sprintf("%d", exec.UserID)).Inc()
 		log.WithError(err).Error("failed to store user followers to db")
 		return
@@ -162,24 +169,24 @@ func process(
 	if len(followers)+len(previousStars) == 0 {
 		mailer.SendWelcome(
 			dto.WelcomeEmailData{
-				Login:     user.Login,
-				Email:     user.Email,
-				Followers: len(user.Followers),
+				Login:     usr.Login,
+				Email:     usr.Email,
+				Followers: len(usr.Followers),
 				Stars:     countStars(stars),
 				Repos:     len(stars),
 				ClientID:  config.ClientID,
 			},
 		)
 	} else {
-		newFollowers := diff.Of(user.Followers, followers)
-		unfollowers := diff.Of(followers, user.Followers)
+		newFollowers := diff.Of(usr.Followers, followers)
+		unfollowers := diff.Of(followers, usr.Followers)
 		newStars, unstars := stargazerStatistics(stars, previousStars)
 		if len(newFollowers)+len(unfollowers)+len(newStars)+len(unstars) > 0 {
 			mailer.SendChanges(
 				dto.ChangesEmailData{
-					Login:        user.Login,
-					Email:        user.Email,
-					Followers:    len(user.Followers),
+					Login:        usr.Login,
+					Email:        usr.Email,
+					Followers:    len(usr.Followers),
 					Stars:        countStars(stars),
 					Repos:        len(stars),
 					NewFollowers: newFollowers,

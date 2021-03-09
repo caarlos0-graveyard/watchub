@@ -18,7 +18,7 @@ func NewExecstore(db *sqlx.DB) *Execstore {
 const executionsStmQuery = `
 	UPDATE tokens
 	SET next = now() + interval '1 day', updated_at = now()
-	WHERE next <= now()
+	WHERE next <= now() and disabled is not true
 	RETURNING user_id, token
 `
 

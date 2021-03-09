@@ -18,6 +18,11 @@ func NewUserdatastore(db *sqlx.DB) *Userdatastore {
 	return &Userdatastore{db}
 }
 
+func (db *Userdatastore) Disable(userID int64) error {
+	_, err := db.Exec("UPDATE tokens SET disabled = true WHERE user_id = $1", userID)
+	return err
+}
+
 // GetFollowers of a given userID
 func (db *Userdatastore) GetFollowers(userID int64) ([]string, error) {
 	var logins []string

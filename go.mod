@@ -28,7 +28,7 @@ require (
 	github.com/prometheus/client_golang v1.8.0
 	github.com/robfig/cron v1.2.0
 	github.com/sendgrid/rest v2.6.0+incompatible // indirect
-	github.com/sendgrid/sendgrid-go v3.7.2+incompatible
+	github.com/sendgrid/sendgrid-go v3.10.0+incompatible
 	github.com/stretchr/testify v1.6.1
 	golang.org/x/oauth2 v0.0.0-20200107190931-bf48bf16ab8d
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a

@@ -3,6 +3,7 @@ package datastore
 import "github.com/caarlos0/watchub/shared/model"
 
 type Userdatastore interface {
+	Disable(userID int64) error
 	GetFollowers(userID int64) ([]string, error)
 	SaveFollowers(userID int64, followers []string) error
 	GetStars(userID int64) ([]model.Star, error)

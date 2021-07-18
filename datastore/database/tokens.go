@@ -23,7 +23,7 @@ const insertTokenStm = `
 	INSERT INTO tokens(user_id, token)
 	VALUES($1, $2)
 	ON CONFLICT(user_id)
-		DO UPDATE SET token = $2, updated_at = now();
+		DO UPDATE SET token = $2, updated_at = now(), disabled = false;
 `
 
 // SaveToken saves a token

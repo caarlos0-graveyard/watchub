@@ -3,6 +3,7 @@ package stargazers
 import (
 	"context"
 	"sync"
+	"time"
 
 	"github.com/caarlos0/watchub/shared/model"
 	"github.com/google/go-github/v28/github"
@@ -85,15 +86,20 @@ func getPage(
 	client *github.Client,
 	repo *github.Repository,
 	opt *github.ListOptions,
-) (stars []*github.Stargazer, nextPage int, err error) {
+) ([]*github.Stargazer, int, error) {
 	stars, resp, err := client.Activity.ListStargazers(
 		ctx,
 		*repo.Owner.Login,
 		*repo.Name,
 		opt,
 	)
+	var aerr github.AbuseRateLimitError
+	if err != nil && errors.As(err, &aerr) {
+		time.Sleep(aerr.GetRetryAfter())
+		return getPage(ctx, client, repo, opt)
+	}
 	if err != nil {
-		return
+		return stars, 0, err
 	}
 	return stars, resp.NextPage, nil
 }

@@ -18,21 +18,24 @@ create table if not exists users(
 );
 
 create table if not exists repositories(
-	id bigint primary key,
-	name text not null unique,
+	id integer primary key autoincrement,
+	name text not null,
+	user_id bigint not null,
 	created_at timestamp default current_timestamp,
-	updated_at timestamp default current_timestamp
+	updated_at timestamp default current_timestamp,
+
+	foreign key (user_id) references tokens (id) on delete cascade on update no action,
+	constraint unique_repository unique (name, user_id)
 );
 
 create table if not exists starred_repositories(
 	id integer primary key autoincrement,
-	user_id bigint not null,
 	repository_id bigint not null,
 	stargazer_id integer not null,
 
-	foreign key (user_id) references tokens (id) on delete cascade on update no action,
 	foreign key (repository_id) references repositories (id) on delete cascade on update no action,
-	foreign key (stargazer_id) references users (id) on delete cascade on update no action
+	foreign key (stargazer_id) references users (id) on delete cascade on update no action,
+	constraint unique_stargazer unique (repository_id, stargazer_id)
 );
 
 create table if not exists user_followers(
@@ -41,5 +44,6 @@ create table if not exists user_followers(
 	follower_id integer not null,
 
 	foreign key (user_id) references tokens (id) on delete cascade on update no action,
-	foreign key (follower_id) references users (id) on delete cascade on update no action
+	foreign key (follower_id) references users (id) on delete cascade on update no action,
+	constraint unique_follower unique (user_id, follower_id)
 );

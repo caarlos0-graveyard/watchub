@@ -56,7 +56,6 @@ func processRepo(
 		stargazers = append(stargazers, star.User.GetLogin())
 	}
 	return model.Star{
-		RepoID:     *repo.ID,
 		RepoName:   *repo.FullName,
 		Stargazers: stargazers,
 	}, nil

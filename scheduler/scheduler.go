@@ -212,9 +212,9 @@ func countStars(stars []model.Star) (count int) {
 func stargazerStatistics(stars, previousStars []model.Star) (newStars, unstars []dto.StarEmailData) {
 	for _, s := range stars {
 		for _, os := range previousStars {
-			if s.RepoID != os.RepoID {
-				continue
-			}
+			// if s.RepoID != os.RepoID {
+			// 	continue
+			// } TODO: FIX THIS SHIT
 			if d := getDiff(s.RepoName, s.Stargazers, os.Stargazers); d != nil {
 				newStars = append(newStars, *d)
 			}

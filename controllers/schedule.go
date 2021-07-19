@@ -2,7 +2,6 @@ package controllers
 
 import (
 	"net/http"
-	"time"
 
 	"github.com/caarlos0/watchub/config"
 	"github.com/caarlos0/watchub/datastore"
@@ -39,7 +38,7 @@ func (ctrl *Schedule) Handler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "not logged in", http.StatusForbidden)
 		return
 	}
-	if err := ctrl.store.Schedule(id, time.Now()); err != nil {
+	if err := ctrl.store.Schedule(id); err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}

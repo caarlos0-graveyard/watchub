@@ -1,8 +1,9 @@
 package database
 
 import (
-	"encoding/json"
+	"fmt"
 
+	"github.com/apex/log"
 	"github.com/caarlos0/watchub/shared/model"
 	"github.com/hashicorp/go-multierror"
 	"github.com/jmoiron/sqlx"
@@ -45,14 +46,14 @@ func (db *Userdatastore) SaveFollowers(userID int64, followers []string) error {
 	return db.WithTx(func(tx *sqlx.Tx) error {
 		for _, login := range followers {
 			var followerID int64
-			if err := tx.Select(&followerID, `
+			if err := tx.QueryRow(`
 				INSERT INTO users(login)
 				VALUES($1)
 				ON CONFLICT(login) DO
 					UPDATE SET login = $1, updated_at = current_timestamp
 				RETURNING id
-			`, login); err != nil {
-				return err
+			`, login).Scan(&followerID); err != nil {
+				return fmt.Errorf("insert users failed: %w", err)
 			}
 
 			if _, err := tx.Exec(`
@@ -60,7 +61,7 @@ func (db *Userdatastore) SaveFollowers(userID int64, followers []string) error {
 				VALUES ($1, $2)
 				ON CONFLICT DO NOTHING
 			`, userID, followerID); err != nil {
-				return err
+				return fmt.Errorf("insert user_followers failed: %w", err)
 			}
 		}
 		return nil
@@ -68,16 +69,38 @@ func (db *Userdatastore) SaveFollowers(userID int64, followers []string) error {
 }
 
 // GetStars of a given userID
-func (db *Userdatastore) GetStars(userID int64) (result []model.Star, err error) {
-	var stars json.RawMessage
-	if err := db.QueryRow(`
-		SELECT stars
-		FROM tokens
-		WHERE id = $1
-	`, userID).Scan(&stars); err != nil {
-		return result, err
+func (db *Userdatastore) GetStars(userID int64) ([]model.Star, error) {
+	var repos []string
+	if err := db.Select(&repos, `
+		SELECT name
+		FROM repositories
+		WHERE user_id = $1
+	`, userID); err != nil {
+		return []model.Star{}, err
 	}
-	return result, json.Unmarshal(stars, &result)
+
+	var stars []model.Star
+
+	for _, repo := range repos {
+		var stargazers []string
+		if err := db.Select(&stargazers, `
+			SELECT s.login
+			FROM stargazers s
+			JOIN repositories r ON
+				r.user_id= $1 AND
+				r.name = $2
+				s.repository_id = r.id
+		`, userID, repo); err != nil {
+			return []model.Star{}, err
+		}
+
+		stars = append(stars, model.Star{
+			RepoName:   repo,
+			Stargazers: stargazers,
+		})
+	}
+
+	return stars, nil
 }
 
 // SaveStars for a given userID
@@ -86,36 +109,36 @@ func (db *Userdatastore) SaveStars(userID int64, stars []model.Star) error {
 		for _, star := range stars {
 			var repoID int64
 			// TODO: what if multiple users have the same repository? e.g. from orgs
-			if err := tx.Select(&repoID, `
+			if err := tx.QueryRow(`
 				INSERT INTO repositories(name, user_id)
 				VALUES($1, $2)
 				ON CONFLICT DO UPDATE
 					SET name = $1,
 						updated_at = current_timestamp
 				RETURNING id
-			`, star.RepoName, userID); err != nil {
-				return err
+			`, star.RepoName, userID).Scan(&repoID); err != nil {
+				return fmt.Errorf("insert repositories failed: %w", err)
 			}
 
 			for _, login := range star.Stargazers {
-				var userID int64
-				if err := tx.Select(&userID, `
+				var stargazerID int64
+				if err := tx.QueryRow(`
 					INSERT INTO users(login)
 					VALUES($1)
 					ON CONFLICT DO UPDATE
 						SET login = $1,
 							updated_at = current_timestamp
 					RETURNING id
-				`, login); err != nil {
-					return err
+				`, login).Scan(&stargazerID); err != nil {
+					return fmt.Errorf("insert users failed: %w", err)
 				}
 
 				if _, err := tx.Exec(`
 					INSERT INTO starred_repositories(repository_id, stargazer_id)
 					VALUES ($1, $2)
 					ON CONFLICT DO NOTHING
-				`, repoID, userID); err != nil {
-					return err
+				`, repoID, stargazerID); err != nil {
+					return fmt.Errorf("insert starred_repositories failed: %w", err)
 				}
 			}
 		}
@@ -176,15 +199,19 @@ func (db *Userdatastore) UserExist(userID int64) (bool, error) {
 }
 
 func (db *Userdatastore) WithTx(fn func(tx *sqlx.Tx) error) error {
+	log.Info("beginning tx")
 	tx, err := db.DB.Beginx()
 	if err != nil {
 		return err
 	}
 	if err := fn(tx); err != nil {
+		log.Info("rolling back tx")
 		if rerr := tx.Rollback(); rerr != nil {
 			err = multierror.Append(err, rerr)
 		}
 		return err
 	}
+
+	log.Info("commiting tx")
 	return tx.Commit()
 }

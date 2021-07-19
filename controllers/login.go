@@ -3,7 +3,6 @@ package controllers
 import (
 	"context"
 	"net/http"
-	"time"
 
 	"github.com/apex/log"
 	"github.com/caarlos0/watchub/config"
@@ -76,7 +75,7 @@ func (ctrl *Login) CallbackHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	if !exists {
-		if err := ctrl.store.Schedule(u.GetID(), time.Now()); err != nil {
+		if err := ctrl.store.Schedule(u.GetID()); err != nil {
 			log.WithError(err).Error("failed to schedule sync")
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return

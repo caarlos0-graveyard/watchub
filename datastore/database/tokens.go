@@ -2,7 +2,6 @@ package database
 
 import (
 	"encoding/json"
-	"time"
 
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
@@ -40,13 +39,13 @@ func (db *Tokenstore) SaveToken(userID int64, token *oauth2.Token) error {
 }
 
 // Schedule schedules a new execution at the given time
-func (db *Tokenstore) Schedule(userID int64, date time.Time) error {
+func (db *Tokenstore) Schedule(userID int64) error {
 	_, err := db.Exec(`
 		UPDATE tokens
-		SET next = $2,
+		SET next = current_timestamp,
 			updated_at = current_timestamp
 		WHERE id = $1
-	`, userID, date)
+	`, userID)
 	return err
 }
 

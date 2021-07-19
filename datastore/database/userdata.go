@@ -85,10 +85,10 @@ func (db *Userdatastore) GetStars(userID int64) ([]model.Star, error) {
 		var stargazers []string
 		if err := db.Select(&stargazers, `
 			SELECT s.login
-			FROM stargazers s
+			FROM starred_repositories s
 			JOIN repositories r ON
 				r.user_id= $1 AND
-				r.name = $2
+				r.name = $2 AND
 				s.repository_id = r.id
 		`, userID, repo); err != nil {
 			return []model.Star{}, err

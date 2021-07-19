@@ -11,7 +11,6 @@ type Config struct {
 	ClientID       string `env:"GITHUB_CLIENT_ID"`
 	ClientSecret   string `env:"GITHUB_CLIENT_SECRET"`
 	OauthState     string `env:"OAUTH_STATE"`
-	DatabaseURL    string `env:"DATABASE_URL" envDefault:"postgres://localhost:5432/watchub?sslmode=disable"`
 	SendgridAPIKey string `env:"SENDGRID_API_KEY"`
 	Schedule       string `env:"SCHEDULE" envDefault:"@every 1m"`
 	SessionSecret  string `env:"SESSION_SECRET" envDefault:"super-secret-session-secret"`

@@ -2,3 +2,5 @@ vendor
 .env
 coverage.txt
 bin
+test.db
+watchub.db

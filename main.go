@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	_ "github.com/lib/pq"
+	_ "github.com/mattn/go-sqlite3"
 
 	"github.com/apex/log"
 	"github.com/apex/log/handlers/logfmt"
@@ -34,7 +34,7 @@ func main() {
 	log.Info("starting up...")
 
 	var config = config.Get()
-	var db = database.Connect(config.DatabaseURL)
+	var db = database.Connect()
 	defer func() { _ = db.Close() }()
 	var store = database.NewDatastore(db)
 

@@ -49,7 +49,7 @@ require (
 	github.com/prometheus/common v0.26.0 // indirect
 	github.com/prometheus/procfs v0.6.0 // indirect
 	github.com/russross/blackfriday/v2 v2.0.1 // indirect
-	github.com/sendgrid/rest v2.6.0+incompatible // indirect
+	github.com/sendgrid/rest v2.6.5+incompatible // indirect
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/ssor/bom v0.0.0-20170718123548-6386211fdfcf // indirect
 	github.com/vanng822/css v0.0.0-20190504095207-a21e860bcd04 // indirect

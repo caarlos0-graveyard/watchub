@@ -181,8 +181,8 @@ github.com/robfig/cron v1.2.0/go.mod h1:JGuDeoQd7Z6yL4zQhZ3OPEVHB7fL6Ka6skscFHfm
 github.com/rogpeppe/fastuuid v1.1.0/go.mod h1:jVj6XXZzXRy/MSR5jhDC/2q6DgLz+nrA6LYCDYWNEvQ=
 github.com/russross/blackfriday/v2 v2.0.1 h1:lPqVAte+HuHNfhJ/0LC98ESWRz8afy9tM/0RK8m9o+Q=
 github.com/russross/blackfriday/v2 v2.0.1/go.mod h1:+Rmxgy9KzJVeS9/2gXHxylqXiyQDYRxCVz55jmeOWTM=
-github.com/sendgrid/rest v2.6.0+incompatible h1:a2tyRVS0S5kcY6fVq5ihxOTJiGTQROrqf7SkKbmpYzs=
-github.com/sendgrid/rest v2.6.0+incompatible/go.mod h1:kXX7q3jZtJXK5c5qK83bSGMdV6tsOE70KbHoqJls4lE=
+github.com/sendgrid/rest v2.6.5+incompatible h1:MZsDqRdwKTHXNABhVgiZFLgVDN698H4QtFrTX3WlrN0=
+github.com/sendgrid/rest v2.6.5+incompatible/go.mod h1:kXX7q3jZtJXK5c5qK83bSGMdV6tsOE70KbHoqJls4lE=
 github.com/sendgrid/sendgrid-go v3.10.3+incompatible h1:p+gXRxF51RJTBlMUpVuWopM+UkLoZQ5ETyR2KLrH4zw=
 github.com/sendgrid/sendgrid-go v3.10.3+incompatible/go.mod h1:QRQt+LX/NmgVEvmdRw0VT/QgUn499+iza2FnDca9fg8=
 github.com/sergi/go-diff v1.0.0/go.mod h1:0CfEIISq7TuYL3j771MWULgwwjU+GofnZX9QAmXWZgo=

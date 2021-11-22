@@ -9,7 +9,7 @@ require (
 	github.com/PuerkitoBio/goquery v1.5.1 // indirect
 	github.com/andybalholm/cascadia v1.2.0 // indirect
 	github.com/apex/log v1.9.0
-	github.com/caarlos0/env/v6 v6.4.0
+	github.com/caarlos0/env/v6 v6.7.2
 	github.com/google/go-github/v28 v28.1.1
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/mux v1.8.0
@@ -17,8 +17,8 @@ require (
 	github.com/huandu/xstrings v1.3.2 // indirect
 	github.com/imdario/mergo v0.3.9 // indirect
 	github.com/jaytaylor/html2text v0.0.0-20200412013138-3577fbdbcff7 // indirect
-	github.com/jmoiron/sqlx v1.2.0
-	github.com/lib/pq v1.9.0
+	github.com/jmoiron/sqlx v1.3.4
+	github.com/lib/pq v1.10.4
 	github.com/matcornic/hermes/v2 v2.1.0
 	github.com/mattn/go-runewidth v0.0.9 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect

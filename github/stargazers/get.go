@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/caarlos0/watchub/shared/model"
-	"github.com/google/go-github/v28/github"
+	"github.com/google/go-github/v42/github"
 	"github.com/pkg/errors"
 	"golang.org/x/sync/errgroup"
 )

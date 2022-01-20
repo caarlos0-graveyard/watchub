@@ -1,3 +1,4 @@
+//go:build integration
 // +build integration
 
 package followers_test
@@ -7,7 +8,7 @@ import (
 	"testing"
 
 	"github.com/caarlos0/watchub/github/followers"
-	"github.com/google/go-github/v28/github"
+	"github.com/google/go-github/v42/github"
 	"github.com/stretchr/testify/assert"
 	"golang.org/x/oauth2"
 )

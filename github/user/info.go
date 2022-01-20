@@ -8,7 +8,7 @@ import (
 	"github.com/caarlos0/watchub/github/email"
 	"github.com/caarlos0/watchub/github/followers"
 	"github.com/caarlos0/watchub/shared/dto"
-	"github.com/google/go-github/v28/github"
+	"github.com/google/go-github/v42/github"
 )
 
 var ErrBadCreds = errors.New("bad credentials")

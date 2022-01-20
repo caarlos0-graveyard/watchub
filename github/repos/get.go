@@ -3,7 +3,7 @@ package repos
 import (
 	"context"
 
-	"github.com/google/go-github/v28/github"
+	"github.com/google/go-github/v42/github"
 	"github.com/pkg/errors"
 )
 

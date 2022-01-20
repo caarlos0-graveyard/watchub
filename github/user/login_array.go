@@ -1,6 +1,6 @@
 package user
 
-import "github.com/google/go-github/v28/github"
+import "github.com/google/go-github/v42/github"
 
 // ToLoginArray maps a list of github users to a list of their logins
 func ToLoginArray(users []*github.User) (logins []string) {

@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/apex/log v1.9.0
-	github.com/caarlos0/env/v6 v6.9.2
+	github.com/caarlos0/env/v6 v6.9.3
 	github.com/google/go-github/v42 v42.0.0
 	github.com/gorilla/context v1.1.1
 	github.com/gorilla/mux v1.8.0

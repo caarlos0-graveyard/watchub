@@ -66,8 +66,8 @@ github.com/beorn7/perks v1.0.0/go.mod h1:KWe93zE9D1o94FZ5RNwFwVgaQK1VOXiVxmqh+Ce
 github.com/beorn7/perks v1.0.1 h1:VlbKKnNfV8bJzeqoa4cOKqO6bYr3WgKZxO8Z16+hsOM=
 github.com/beorn7/perks v1.0.1/go.mod h1:G2ZrVWU2WbWT9wwq4/hrbKbnv/1ERSJQ0ibhJ6rlkpw=
 github.com/bradleyfalzon/ghinstallation/v2 v2.0.3/go.mod h1:tlgi+JWCXnKFx/Y4WtnDbZEINo31N5bcvnCoqieefmk=
-github.com/caarlos0/env/v6 v6.9.2 h1:vYTmP7KPtHf3LqaQH5Z2AkUY8GmanDrTelXnFzxSK44=
-github.com/caarlos0/env/v6 v6.9.2/go.mod h1:hvp/ryKXKipEkcuYjs9mI4bBCg+UI0Yhgm5Zu0ddvwc=
+github.com/caarlos0/env/v6 v6.9.3 h1:Tyg69hoVXDnpO5Qvpsu8EoquarbPyQb+YwExWHP8wWU=
+github.com/caarlos0/env/v6 v6.9.3/go.mod h1:hvp/ryKXKipEkcuYjs9mI4bBCg+UI0Yhgm5Zu0ddvwc=
 github.com/census-instrumentation/opencensus-proto v0.2.1/go.mod h1:f6KPmirojxKA12rnyqOA5BBL4O983OfeGPqjHWSTneU=
 github.com/cespare/xxhash/v2 v2.1.1/go.mod h1:VGX0DQ3Q6kWi7AoAeZDth3/j3BFtOZR5XLFGgcrjCOs=
 github.com/cespare/xxhash/v2 v2.1.2 h1:YRXhKfTDauu4ajMg1TPgFO5jnlC2HCbmLXMcTG5cbYE=

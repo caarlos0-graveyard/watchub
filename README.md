@@ -1,3 +1,11 @@
+# Service will be shut down!
+
+I'm not really using nor maintaining this for a long time.
+
+Code will be available here (archived repo), servers will be shut down very soon.
+
+---
+
 <p align="center">
   <img alt="Watchub Logo" src="https://github.com/caarlos0/watchub/raw/master/static/apple-touch-icon-144x144.png" />
   <h3 align="center">Watchub</h3>
